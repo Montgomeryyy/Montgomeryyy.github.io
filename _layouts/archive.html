@@ -1,23 +1,21 @@
 ---
-layout: default
+layout: page
+titles:
+  en: Archive
+  zh: 归档
+  zh-Hans: 归档
+  zh-Hant: 歸檔
 ---
-<div class="wrapper">
-<div class="page">
 
-  <header class="post-header">
-    <h1 class="post-title">Posts in "{{ page.title | capitalize }}"</h1>
-  </header>
-
-  {% include page_divider.html %}
-
-  <article class="post-content">
-    <ul class="posts-list">
-      {% for post in page.posts %}
-      <li><strong><a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a></strong><span class="post-date"> - {{ post.date | date: "%B %-d, %Y" }}</span></li>
-      {% endfor %}
-    </ul>
-  </article>
-
+<div class="layout--archive js-all">
+  {%- include tags.html -%}
+  <div class="js-result layout--archive__result d-none">
+    {%- include article-list.html articles=site.posts type='brief' show_info=true reverse=true group_by='year' -%}
+  </div>
 </div>
-</div>
-<br>
+
+<script>
+  {%- include scripts/archieve.js -%}
+</script>
+
+{{ content }}
